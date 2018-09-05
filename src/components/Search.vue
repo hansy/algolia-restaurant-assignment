@@ -42,7 +42,7 @@ export default {
       obj.geo = params.aroundLatLng;
       obj.filters = [];
 
-      if (params.filters !== '' || params.filters !== undefined) {
+      if (params.filters !== '' && params.filters !== undefined) {
         obj.filters = params.filters.split(' AND ');
       }
 
