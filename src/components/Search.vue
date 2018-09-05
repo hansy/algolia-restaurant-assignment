@@ -19,6 +19,7 @@ export default {
   },
   created() {
     this.parseParams();
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getLocation);
     }
@@ -34,13 +35,12 @@ export default {
     },
     parseParams() {
       const params = this.$route.query;
-      console.log(params);
       const obj = {};
 
       obj.query = params.query;
       obj.currentCount = params.offset || 0;
       obj.geo = params.aroundLatLng;
-      obj.filters = []
+      obj.filters = [];
 
       if (params.filters !== '') {
         obj.filters = params.filters.split(' AND ');
