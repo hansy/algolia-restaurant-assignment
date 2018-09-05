@@ -34,10 +34,7 @@ export default {
   methods: {
     // https://stackoverflow.com/questions/4878756/how-to-capitalize-first-letter-of-each-word-like-a-2-word-city/4878797
     capitalizeName() {
-      return this.name.toLowerCase()
-                 .split(' ')
-                 .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                 .join(' ');
+      return this.name.toLowerCase().split(' ').map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
     },
     searchFacetValues() {
       this.$store.dispatch('restaurants/searchFacetValues', {
@@ -53,13 +50,14 @@ export default {
     clearAllActives() {
       const items = this.$refs;
 
+      // eslint-disable-next-line
       for (const item in items) {
         this.$refs[item][0].removeActive();
       }
     },
     isSearchable() {
       return this.name === 'cuisine';
-    }
+    },
   },
 };
 </script>

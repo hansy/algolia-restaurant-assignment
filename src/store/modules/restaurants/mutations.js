@@ -39,6 +39,7 @@ export default {
 
     facets = {};
 
+    // eslint-disable-next-line
     for (const item in items) {
       facets[items[item].value] = items[item].count;
     }
@@ -48,7 +49,7 @@ export default {
   clearFacet(state, facetName) {
     const regex = new RegExp(`${facetName}:`, 'g');
 
-    for (let i = 0; i < state.filters.length; i++) {
+    for (let i = 0; i < state.filters.length; i += 1) {
       if (state.filters[i].match(regex)) {
         state.filters.splice(i, 1);
       }
