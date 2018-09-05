@@ -52,7 +52,11 @@ export default {
 
       // eslint-disable-next-line
       for (const item in items) {
-        this.$refs[item][0].removeActive();
+        const facetItem = this.$refs[item][0];
+
+        if (facetItem) {
+          facetItem.removeActive();
+        }
       }
     },
     isSearchable() {
