@@ -5,7 +5,8 @@
            :placeholder="'Filter '+capitalizeName()"
            @input="searchFacetValues"
            v-model="facetQuery"
-           class="facet__filter"/>
+           class="facet__filter"
+           v-if="isSearchable()"/>
     <table class="facet__items">
       <facet-item v-for="(value, itemName) in items"
                   :name="itemName"
@@ -56,6 +57,9 @@ export default {
         this.$refs[item][0].removeActive();
       }
     },
+    isSearchable() {
+      return this.name === 'cuisine';
+    }
   },
 };
 </script>

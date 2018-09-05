@@ -4,10 +4,7 @@ export default {
     state.processingTimeMS = payload.processingTimeMS;
     state.totalCount = payload.nbHits;
     state.currentCount = payload.hits.length;
-
-    if (state.facets === undefined) {
-      state.facets = payload.facets;
-    }
+    state.facets = payload.facets;
   },
   addResults(state, payload) {
     state.hits = state.hits.concat(payload.hits);
@@ -56,8 +53,6 @@ export default {
         state.filters.splice(i, 1);
       }
     }
-
-    state.facets = undefined;
   },
   addGeo(state, coords) {
     state.geo = coords;

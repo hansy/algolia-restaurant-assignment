@@ -12,7 +12,7 @@ export default class {
     const options = {
       query,
       filters: joinArray(filters),
-      facets: ['cuisine'],
+      facets: ['cuisine', 'payment_options'],
     };
 
     if (offset) {
