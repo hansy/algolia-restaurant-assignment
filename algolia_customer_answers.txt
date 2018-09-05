@@ -1,0 +1,47 @@
+Answer 1:
+
+Hi George,
+
+Thanks for reaching out; happy to help clarify any of the terminology for you!
+
+Indexing:
+Indexing means to store your data in a way that makes it easily retrievable/queryable. When you upload your dataset to an index (our database) you've created via our dashboard or via our API, we store and format your data in a very specific way so that it can be easily found later on. This is called indexing.
+
+Records:
+Records are the objects you add to your index! For example, if you were uploading your data about your favorite Disney movies, each uploaded Disney movie data point would be a record in the index. Remember, a record refers to the entire object. Each characteristic of the movie, like "name" or "description" are the record's attributes. And of course, all your records make up your index!
+
+Custom Ranking:
+You can think of custom rankings like tie-breakers. Let's say, after you've uploaded your Disney movie collection, you search "Beauty and the Beast". Two records come up. Both have the exact same title and description, but one is the animated version, while the other is the live-action version. Which one would you rather see higher up on the list? This is where Custom Rankings come in. You can specify, for example, that in a tie-breaker situation, you'd rather have the animated version of your movies rank higher. The metrics you choose are completely up to you.
+
+I hope that helps clarify any confusions you may have. Let me know if you have any additional questions or concerns!
+
+-Hans
+
+Answer 2:
+
+Hi Matt,
+
+Thank you so much for your feedback! We're constantly iterating ourselves on newer and better designs to make our users' workflow easier. I'm sorry to hear to you don't find the new dashboard as easy to use as before, but I'd love to hear more about your use case. Maybe I can provide some tips or shortcuts to help your workflow. I'd also be happy to submit a ticket of your user experience feedback to our product team!
+
+-Hans
+
+Answer 3:
+
+Hi Leo,
+
+Thanks for reaching out! I'm glad you're considering using Algolia, so I'm happy to help out in any way I can! In general, the amount of development work depends on how customized you want your experience to be. We do, howeverm have a suite of pre-built tools and libraries that make getting search up and running in your app as easy as copy/paste. This includes the search UI so you don't even have to build the search interface from scratch.
+
+The high-level steps are as follows:
+
+1.) Create an index
+You can create an index right in the Algolia dashboard. If you have your data in JSON or CSV format, or you want to manually add records to the index, you can upload it through the dashboard. No coding is required.
+
+2.) Configure your searchable attributes
+The next step is to define the attributes in your records you'd like to search against. Th e easiest method to do so would be to define the attributes through the dashboard. It's as simple as pointing and clicking on the attributes you want to use.
+
+3.) Search your data!
+There's full search functionality of your data built right into the dashboard, so give it a spin! It'll give you an idea of the capability of Algolia and how easy it is to query your data. To build your own search interface, I recommend using out InstantSearch library. We have the library available for a number of languages and frameworks. We have step-by-step guides you can follow to add InstantSearch to your own page. See our tutorials here (https://www.algolia.com/doc/tutorials/) for more information.
+
+And really that's it! As you can see, it doesn't require high technical ability to implement powerful full-text search in your app! Let me know if you have any additional questions or concerns.
+
+-Hans
