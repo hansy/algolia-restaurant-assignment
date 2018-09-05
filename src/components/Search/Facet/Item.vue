@@ -1,0 +1,38 @@
+<template>
+  <tr :class="['facet__item', { active:isActive }]" @click="addFacet" @hover="toggleActive">
+    <td class="facet__item__name">{{name}}</td>
+    <td class="facet__item__value">{{value}}</td>
+  </tr>
+</template>
+
+<script>
+export default {
+  name: 'facet-item',
+  props: ['facetName', 'name', 'value'],
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    addFacet() {
+      this.toggleActive();
+      const filter = `${this.facetName}:"${this.name}"`;
+
+      if (this.isActive) {
+        this.$store.commit('restaurants/addFilter', filter);
+      } else {
+        this.$store.commit('restaurants/clearFilter', filter);
+      }
+
+      this.$store.dispatch('restaurants/search');
+    },
+    toggleActive() {
+      this.isActive = !this.isActive;
+    },
+    removeActive() {
+      this.isActive = false;
+    },
+  },
+};
+</script>

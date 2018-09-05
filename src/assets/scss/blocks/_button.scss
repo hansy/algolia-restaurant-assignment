@@ -1,0 +1,16 @@
+.button {
+  background-color: transparent;
+  border: 1px solid $light-grey;
+  border-radius: 3px;
+  color: $black;
+  display: block;
+  font-size: 0.9rem;
+  margin: 0 auto;
+  padding: 15px 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $black;
+    color: $light-grey;
+  }
+}

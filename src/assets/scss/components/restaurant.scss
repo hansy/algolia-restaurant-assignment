@@ -1,0 +1,59 @@
+.restaurant {
+  &__snack {
+    margin: 20px 0;
+
+    &__img {
+      background-position: contain;
+      background-repeat: no-repeat;
+      border-radius: 5px;
+      height: 80px;
+      margin-bottom: 10px;
+      width: 80px;
+
+      @media(min-width: $media-md-min) {
+        display: inline-block;
+        margin-right: 20px;
+      }
+    }
+
+    &__content {
+      vertical-align: top;
+      max-width: 300px;
+
+      @media(min-width: $media-md-min) {
+        display: inline-block;
+        max-width: 370px;
+      }
+    }
+
+    &__name {
+      color: $black;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 5px;
+    }
+
+    &__ratings {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin: 5px 0;
+    }
+
+    &__rating {
+      color: $orange;
+    }
+
+    &__reviews {
+      color: $faint-grey;
+    }
+
+    &__meta {
+      color: $faint-grey;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin: 5px 0;
+    }
+  }
+}

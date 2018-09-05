@@ -1,0 +1,24 @@
+.results {
+  border-left: 1px solid $light-grey;
+  padding: 30px;
+  vertical-align: top;
+  width: 100%;
+  
+  @media(min-width: $media-md-min) {
+    display: inline-block;
+    width: 70%;
+  }
+
+  &__meta {
+    p {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0 0 20px;
+
+      span {
+        font-size: 0.75rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

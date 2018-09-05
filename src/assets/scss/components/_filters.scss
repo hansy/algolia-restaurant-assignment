@@ -1,0 +1,10 @@
+.filters {
+  padding: 30px;
+  vertical-align: top;
+  width: 100%;
+
+  @media(min-width: $media-md-min) {
+    display: inline-block;
+    width: 30%;
+  }
+}

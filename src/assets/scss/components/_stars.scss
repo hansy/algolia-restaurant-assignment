@@ -1,0 +1,21 @@
+/* https://codepen.io/Bluetidepro/pen/GkpEa */
+.stars {
+  background: url('../img/stars-icons.png');
+  font-size: 0;
+  height: 18px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 95px;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: bottom;
+  
+  &__rating {
+    background: url('../img/stars-icons.png');
+    background-position: 0 100%;
+    float: left;
+    height: 18px;
+    display:block;
+  }
+}
