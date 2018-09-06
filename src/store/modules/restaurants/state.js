@@ -4,7 +4,7 @@ export default {
   currentCount: 0,
   processingTimeMS: 0,
   query: '',
-  filters: [],
+  filters: {},
   facets: undefined,
-  geo: undefined,
+  geo: '',
 };

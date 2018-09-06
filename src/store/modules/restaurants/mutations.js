@@ -4,7 +4,10 @@ export default {
     state.processingTimeMS = payload.processingTimeMS;
     state.totalCount = payload.nbHits;
     state.currentCount = payload.hits.length;
-    state.facets = payload.facets;
+
+    if (state.facets === undefined) {
+      state.facets = payload.facets;
+    }
   },
   addResults(state, payload) {
     state.hits = state.hits.concat(payload.hits);
@@ -21,16 +24,34 @@ export default {
     state.hits = [];
   },
   addFilter(state, filter) {
-    state.filters.push(filter);
+    if (state.filters[filter.name]) {
+      state.filters[filter.name].values.push(filter.value);
+    } else {
+      state.filters[filter.name] = {
+        operator: filter.operator,
+        values: [filter.value],
+      };
+    }
   },
   clearFilters(state) {
-    state.filters = [];
+    state.filters = {};
   },
   clearFilter(state, filter) {
-    const index = state.filters.indexOf(filter);
+    // eslint-disable-next-line
+    for (const stateFilterName in state.filters) {
+      if (stateFilterName === filter.name) {
+        const stateFilter = state.filters[stateFilterName];
 
-    if (index !== -1) {
-      state.filters.splice(index, 1);
+        for (let i = 0; i < stateFilter.values.length; i += 1) {
+          if (stateFilter.values[i] === filter.value) {
+            stateFilter.values.splice(i, 1);
+          }
+        }
+
+        if (stateFilter.values.length === 0) {
+          delete state.filters[stateFilterName];
+        }
+      }
     }
   },
   populateFacets(state, payload) {
@@ -47,11 +68,10 @@ export default {
     state.facets[payload.name] = facets;
   },
   clearFacet(state, facetName) {
-    const regex = new RegExp(`${facetName}:`, 'g');
-
-    for (let i = 0; i < state.filters.length; i += 1) {
-      if (state.filters[i].match(regex)) {
-        state.filters.splice(i, 1);
+    // eslint-disable-next-line
+    for (const stateFilterName in state.filters) {
+      if (stateFilterName === facetName) {
+        delete state.filters[facetName];
       }
     }
   },

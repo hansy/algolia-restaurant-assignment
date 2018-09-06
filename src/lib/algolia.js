@@ -1,6 +1,40 @@
 const algoliasearch = require('algoliasearch');
 
-const joinArray = arr => arr.join(' AND ');
+const joinArray = (arr, operator) => arr.join(operator);
+
+const prependStr = (arr, str) => arr.map(i => str + i);
+
+const filtersToString = (filters) => {
+  const filterArr = [];
+
+  // eslint-disable-next-line
+  for (const filterName in filters) {
+    let str = '';
+    const filter = filters[filterName];
+
+    switch (filter.operator) {
+      case 'OR':
+        if (filter.values.length > 1) {
+          const prePended = prependStr(filter.values, `${filterName}:`);
+          const values = joinArray(prePended, ` ${filter.operator} `);
+
+          str += '(';
+          str += values;
+          str += ')';
+        } else {
+          str += `${filterName}:${filter.values[0]}`;
+        }
+
+        break;
+      default:
+        break;
+    }
+
+    filterArr.push(str);
+  }
+
+  return joinArray(filterArr, ' AND ');
+};
 
 export default class {
   constructor() {
@@ -11,7 +45,7 @@ export default class {
   search(query, filters, offset, geo, callback) {
     const options = {
       query,
-      filters: joinArray(filters),
+      filters: filtersToString(filters),
       facets: ['cuisine', 'payment_options'],
     };
 

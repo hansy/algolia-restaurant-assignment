@@ -1,5 +1,5 @@
 <template>
-  <tr :class="['facet__item', { active:isActive }]" @click="addFacet" @hover="toggleActive">
+  <tr :class="['facet__item', { active:isActive }]" @click="toggleFacet" @hover="toggleActive">
     <td class="facet__item__name">{{name}}</td>
     <td class="facet__item__value">{{value}}</td>
   </tr>
@@ -15,9 +15,14 @@ export default {
     };
   },
   methods: {
-    addFacet() {
+    toggleFacet() {
       this.toggleActive();
-      const filter = `${this.facetName}:"${this.name}"`;
+
+      const filter = {
+        name: this.facetName,
+        operator: 'OR',
+        value: `"${this.name}"`,
+      };
 
       if (this.isActive) {
         this.$store.commit('restaurants/addFilter', filter);
