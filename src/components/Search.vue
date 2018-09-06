@@ -69,6 +69,7 @@ export default {
       }
       return obj;
     },
+    // https://gist.github.com/Integralist/5134943#gistcomment-795783
     findAllMatches(regex, sourceString, aggregator = []) {
       const arr = regex.exec(sourceString);
 
